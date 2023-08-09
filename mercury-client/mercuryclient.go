@@ -1,18 +1,18 @@
 package main
 
 import (
-	"os"
-	"io"
-	"net"
 	"bufio"
 	"fmt"
+	"io"
 	"log"
+	"net"
+	"os"
 	"strings"
 )
 
 func main() {
 	reader := bufio.NewReader(os.Stdin)
-	
+
 	for {
 		fmt.Printf("Mercury host (q to quit)> ")
 		input, err := reader.ReadString('\n')
