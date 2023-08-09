@@ -1,0 +1,48 @@
+# Mercury Protocol Specification
+
+## OVERVIEW
+
+Mercury is a client-server protocol designed for radical simplicity, eschewing the complexity and bloat of other protocols such as Gopher and HTTP.
+
+By convention, Mercury servers listen on TCP port 1958. Additional ports (1959 and up) may be allocated to serve additional content.
+
+A reference implementation of a Mercury server and client may be found at https://github.com/floren/mercury.
+
+## TRANSACTIONS
+
+Mercury transactions looks like this:
+
+	C: Opens connection
+
+	S: Accepts connection
+
+	S: Sends a Mercury document
+
+	S: Closes connection
+
+## MERCURY DOCUMENT SPECIFICATION
+
+This protocol specification includes a document type specification because why not.
+
+Mercury documents may consist of the following octets:
+
+* 0x0a (newline)
+* 0x0d (carriage return)
+* 0x20-0x7e
+
+Mercury clients should display the document to the user as plain text with no formatting applied.
+
+Mercury documents may link to other Mercury servers by including the server's hostname/IP and port in the document. Mercury clients should not parse these "links" or in any way make them clickable etc.
+
+Mercury documents should primarily be about the Mercury protocol, implementations of Mercury, etc. Documents dealing with other subjects are possible but are technically non-compliant.
+
+## FAQ
+
+Q: Since the content the Mercury server sends have no bearing on the protocol itself, does it really make sense to tie the Mercury document spec to the protocol spec?
+A: That's just, like, your opinion.
+
+Q: But couldn't I also use a Mercury server to serve the contents of, for example, a JPEG file? I could even use netcat piped into an image viewer and--
+A: Well, yes, but I will be very grumpy if you do.
+
+Q: Isn't this just the QOTD protocol? (RFC 865)
+A: No, it's different, because it runs on an unprivileged port and there's no limit to the response length. Also even if it was the same, Mercury is really more of an art project intended to get people talking, man.

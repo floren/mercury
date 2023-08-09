@@ -1,0 +1,29 @@
+# The Mercury Protocol
+
+This repository contains the specification and reference implementations for the Mercury protocol.
+
+The specification is defined in SPEC.
+
+## Server
+
+To run the server:
+
+   go install github.com/floren/mercury/mercury-server@master
+   mercury-server -file /tmp/hello.txt
+
+## Client
+
+To run the client:
+
+   go install github.com/floren/mercury/mercury-client@master
+
+The client will prompt for servers. By default, Mercury servers run on port 1958, but you can use multiple servers to serve multiple files:
+
+   $ mercury-client 
+   Mercury host (q to quit)> example.org:1958
+   Welcome!
+   
+   Check out example.org:1959 for some other stuff.
+   Mercury host (q to quit)> example.org:1959
+   You found the secret message!
+   Mercury host (q to quit)> 
